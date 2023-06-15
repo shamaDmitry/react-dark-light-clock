@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import Preloader from './components/Preloader';
+const App = React.lazy(() => import("./App.jsx"));
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <Suspense fallback={<Preloader className="m-auto text-dark h-screen w-16" />}>
     <App />
-  // </React.StrictMode>,
-)
+  </Suspense>
+);
